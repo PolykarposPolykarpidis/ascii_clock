@@ -1,9 +1,9 @@
 #include <iostream>
 #include <string>
 #include <cmath>
-#include <bits/stdc++.h>
 #include <chrono>
-#include <ctime>
+#include <thread>
+#include <cstdint>
 
 const int LOWEST = 65;
 const int RANGE = 25;
@@ -12,7 +12,8 @@ const int RANGE = 25;
 
 int main(int argc, char* argv[]){
     // std::srand(time(0));
-    int loop_times;
+
+    int loop_times = -1;
     if (argc == 1)
         loop_times = 10;
     else if (argc>2) {
@@ -21,6 +22,7 @@ int main(int argc, char* argv[]){
     }
     else
         loop_times = std::stoi(argv[1]);
+    
 
     size_t digit[11][8] = {
         {0b11111100,0b11001100,0b11001100,0b11001100,0b11111100}, // 0
@@ -37,8 +39,8 @@ int main(int argc, char* argv[]){
     };
 
     
-    size_t hour_digit_1,hour_digit_2,minute_digit_1,minute_digit_2,second_digit_1,second_digit_2, colon_index;
-    colon_index = 10;
+    size_t hour_digit_1,hour_digit_2,minute_digit_1,minute_digit_2,second_digit_1,second_digit_2;
+    const size_t colon_index = 10;
     
     for(int c=0;c<loop_times;c++){
         auto now = std::chrono::system_clock::now();
@@ -73,8 +75,10 @@ int main(int argc, char* argv[]){
             }
             std::cout<<'\n';
         }
-        for(int8_t i=0;i<5;i++)std::cout << "\033[1A\033[2K";
-        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+        for(int8_t i=0; i<5; i++)
+            std::cout << "\033[1A\033[2K";
+
+        std::this_thread::sleep_for(std::chrono::seconds(1));
     }
 
     return 0;

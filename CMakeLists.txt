@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.10)
+project(ascii_clock)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED On)
+add_executable(ascii_clock main.cpp)
+target_compile_options(ascii_clock PRIVATE -Wall -Werror)

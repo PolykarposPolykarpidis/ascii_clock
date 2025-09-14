@@ -24,6 +24,7 @@ int main(int argc, char* argv[]){
         loop_times = std::stoi(argv[1]);
     
 
+    // bitmap of the numbers
     size_t digit[11][8] = {
         {0b11111100,0b11001100,0b11001100,0b11001100,0b11111100}, // 0
         {0b00001100,0b00001100,0b00001100,0b00001100,0b00001100}, // 1
@@ -75,6 +76,8 @@ int main(int argc, char* argv[]){
             }
             std::cout<<'\n';
         }
+
+        // clear the screen, i.e., the 5 previous lines
         for(int8_t i=0; i<5; i++)
             std::cout << "\033[1A\033[2K";
 
